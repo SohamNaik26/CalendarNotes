@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>CalendarNotes needs access to your calendar to sync events and provide a seamless experience.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>CalendarNotes needs full access to your calendar to create, edit, and delete events.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>CalendarNotes needs access to your reminders to manage your tasks.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>CalendarNotes needs access to your microphone to record voice notes.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>CalendarNotes needs speech recognition to convert your voice to text in notes.</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>CalendarNotes needs notification permission to remind you about upcoming events and tasks.</string>
+</dict>
+</plist>
