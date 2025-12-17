@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+Docs/
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+DerivedData/
+build/
+*.hmap
+*.ipa
+*.dSYM
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Build logs
+*.log
+build.log
+
+# Scripts
+*.sh
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test files
+CalendarNotesTests/
+CalendarNotesUITests/
+
+# Docker
+docker-compose.yml
+.env
+postgres-data/
+
+# Other
+node_modules/
+*.pyc
+__pycache__/
+

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
+    <entity name="CalendarEvent" representedClassName="CalendarEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="category" optional="NO" attributeType="String" defaultValueString="Other"/>
+        <attribute name="isRecurring" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="recurrenceRule" optional="YES" attributeType="String"/>
+        <attribute name="notificationSettingsData" optional="YES" attributeType="String"/>
+        <attribute name="eventType" optional="YES" attributeType="String"/>
+        <attribute name="detectedSummary" optional="YES" attributeType="String"/>
+        <attribute name="detectedAgendaJSON" optional="YES" attributeType="String"/>
+        <attribute name="detectedPeople" optional="YES" attributeType="String"/>
+        <attribute name="recommendedBookmarkIDs" optional="YES" attributeType="String"/>
+        <attribute name="recommendedNoteIDs" optional="YES" attributeType="String"/>
+        <attribute name="prepChecklistJSON" optional="YES" attributeType="String"/>
+        <attribute name="sentiment" optional="YES" attributeType="String"/>
+        <attribute name="lastAnalyzedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="durationMinutes" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="eventKitId" optional="YES" attributeType="String"/>
+        <attribute name="lastSyncDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="modifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="bookmarkLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookmarkLink" inverseName="event" inverseEntity="BookmarkLink"/>
+        <relationship name="voiceNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VoiceNoteEntity" inverseName="event" inverseEntity="VoiceNoteEntity"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="content" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="linkedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+        <attribute name="noteType" optional="YES" attributeType="String"/>
+        <attribute name="detectedSummary" optional="YES" attributeType="String"/>
+        <attribute name="actionItemsJSON" optional="YES" attributeType="String"/>
+        <attribute name="detectedPeople" optional="YES" attributeType="String"/>
+        <attribute name="detectedDatesJSON" optional="YES" attributeType="String"/>
+        <attribute name="sentiment" optional="YES" attributeType="String"/>
+        <attribute name="wordCount" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastAnalyzedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="bookmarkLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookmarkLink" inverseName="note" inverseEntity="BookmarkLink"/>
+        <relationship name="voiceNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VoiceNoteEntity" inverseName="note" inverseEntity="VoiceNoteEntity"/>
+    </entity>
+    <entity name="TodoItem" representedClassName="TodoItem" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="priority" optional="NO" attributeType="String" defaultValueString="Medium"/>
+        <attribute name="isCompleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="category" optional="NO" attributeType="String" defaultValueString="Other"/>
+        <attribute name="isRecurring" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notificationSettingsData" optional="YES" attributeType="String"/>
+        <relationship name="bookmarkLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookmarkLink" inverseName="task" inverseEntity="BookmarkLink"/>
+        <relationship name="voiceNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VoiceNoteEntity" inverseName="task" inverseEntity="VoiceNoteEntity"/>
+    </entity>
+    <entity name="VoiceNoteEntity" representedClassName="VoiceNoteEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="NO" attributeType="UUID" defaultValueString="00000000-0000-0000-0000-000000000000" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="audioFilePath" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="transcription" optional="YES" attributeType="String"/>
+        <attribute name="transcriptionSummary" optional="YES" attributeType="String"/>
+        <attribute name="durationSeconds" optional="NO" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+        <attribute name="collectionName" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isArchived" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="autoDeleteAfterDays" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="autoDeleteOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastPlayedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="smartKeywords" optional="YES" attributeType="String"/>
+        <attribute name="waveformSamplesJSON" optional="YES" attributeType="String"/>
+        <relationship name="event" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="CalendarEvent" inverseName="voiceNotes" inverseEntity="CalendarEvent"/>
+        <relationship name="note" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="voiceNotes" inverseEntity="Note"/>
+        <relationship name="task" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="TodoItem" inverseName="voiceNotes" inverseEntity="TodoItem"/>
+    </entity>
+    <entity name="Bookmark" representedClassName="Bookmark" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="url" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="title" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="bookmarkDescription" optional="YES" attributeType="String"/>
+        <attribute name="favicon" optional="YES" attributeType="Binary"/>
+        <attribute name="previewImage" optional="YES" attributeType="Binary"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isArchived" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="collectionName" optional="YES" attributeType="String"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastModifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastOpenedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="openCount" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="linkedCalendarDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="linkedEventID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="linkedNoteID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="contentType" optional="YES" attributeType="String"/>
+        <attribute name="contentSubtype" optional="YES" attributeType="String"/>
+        <attribute name="contentMetadata" optional="YES" attributeType="Binary" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="isWatched" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="videoDuration" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="videoProgress" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="pdfPageCount" optional="YES" attributeType="Integer 32"/>
+        <attribute name="pdfHasAnnotations" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="pdfOCRText" optional="YES" attributeType="String"/>
+        <attribute name="imageWidth" optional="YES" attributeType="Integer 32"/>
+        <attribute name="imageHeight" optional="YES" attributeType="Integer 32"/>
+        <attribute name="imageFileSize" optional="YES" attributeType="Integer 64"/>
+        <attribute name="recipeIngredientsJSON" optional="YES" attributeType="String"/>
+        <attribute name="recipeCookTimeMinutes" optional="YES" attributeType="Integer 32"/>
+        <attribute name="gitHubStars" optional="YES" attributeType="Integer 32"/>
+        <attribute name="gitHubForks" optional="YES" attributeType="Integer 32"/>
+        <attribute name="gitHubLanguage" optional="YES" attributeType="String"/>
+        <attribute name="gitHubLastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="productPrice" optional="YES" attributeType="Decimal"/>
+        <attribute name="productCurrency" optional="YES" attributeType="String"/>
+        <attribute name="socialPlatform" optional="YES" attributeType="String"/>
+        <attribute name="socialAuthor" optional="YES" attributeType="String"/>
+        <attribute name="isReadLater" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="readLaterAddedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isRead" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="readDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="readingPriority" optional="NO" attributeType="String" defaultValueString="medium"/>
+        <attribute name="estimatedReadingMinutes" optional="YES" attributeType="Integer 32"/>
+        <attribute name="readingProgress" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="totalReadingTime" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="lastReadingSessionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="collection" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="bookmarks" inverseEntity="Collection"/>
+        <relationship name="tagRelations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="bookmarks" inverseEntity="Tag"/>
+        <relationship name="links" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookmarkLink" inverseName="bookmark" inverseEntity="BookmarkLink"/>
+        <relationship name="readingSessions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ReadingSession" inverseName="bookmark" inverseEntity="ReadingSession"/>
+        <relationship name="recommendationEvents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecommendationEvent" inverseName="bookmark" inverseEntity="RecommendationEvent"/>
+        <relationship name="tagUsageEvents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TagUsageEvent" inverseName="bookmark" inverseEntity="TagUsageEvent"/>
+    </entity>
+    <entity name="Collection" representedClassName="Collection" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="color" optional="NO" attributeType="String" defaultValueString="#999999"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="sortOrder" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isSystem" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="systemIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="themeJSON" optional="YES" attributeType="String"/>
+        <attribute name="headerImage" optional="YES" attributeType="Binary"/>
+        <attribute name="coverImage" optional="YES" attributeType="Binary"/>
+        <attribute name="featuredConfigurationJSON" optional="YES" attributeType="String"/>
+        <attribute name="presentationSettingsJSON" optional="YES" attributeType="String"/>
+        <attribute name="statisticsCacheJSON" optional="YES" attributeType="String"/>
+        <attribute name="preferredLayoutMode" optional="NO" attributeType="String" defaultValueString="masonry"/>
+        <attribute name="heroBookmarkID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isProject" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="projectStatusRawValue" optional="YES" attributeType="String"/>
+        <attribute name="projectSummary" optional="YES" attributeType="String"/>
+        <attribute name="projectStartDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="projectTargetDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="projectCompletionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="projectProgressValue" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <relationship name="parent" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="children" inverseEntity="Collection"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Collection" inverseName="parent" inverseEntity="Collection"/>
+        <relationship name="bookmarks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Bookmark" inverseName="collection" inverseEntity="Bookmark"/>
+        <relationship name="milestones" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProjectMilestone" inverseName="collection" inverseEntity="ProjectMilestone"/>
+        <relationship name="recommendationSettings" optional="YES" toMany="NO" maxCount="1" deletionRule="Cascade" destinationEntity="RecommendationSettings" inverseName="collection" inverseEntity="RecommendationSettings"/>
+        <relationship name="recommendationEvents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecommendationEvent" inverseName="collection" inverseEntity="RecommendationEvent"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="usageCount" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="normalizedName" optional="YES" attributeType="String"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastUsedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="bookmarks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bookmark" inverseName="tagRelations" inverseEntity="Bookmark"/>
+        <relationship name="synonyms" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TagSynonym" inverseName="tag" inverseEntity="TagSynonym"/>
+        <relationship name="parent" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="children" inverseEntity="Tag"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="parent" inverseEntity="Tag"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagGroup" inverseName="tags" inverseEntity="TagGroup"/>
+        <relationship name="associationsAsSource" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TagAssociation" inverseName="source" inverseEntity="TagAssociation"/>
+        <relationship name="associationsAsTarget" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TagAssociation" inverseName="target" inverseEntity="TagAssociation"/>
+        <relationship name="usageEvents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TagUsageEvent" inverseName="tag" inverseEntity="TagUsageEvent"/>
+        <relationship name="automationRules" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagAutomationRule" inverseName="tags" inverseEntity="TagAutomationRule"/>
+        <relationship name="templates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagTemplateEntity" inverseName="tags" inverseEntity="TagTemplateEntity"/>
+    </entity>
+    <entity name="TagAssociation" representedClassName="TagAssociation" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="coOccurrenceCount" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="strength" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="lastComputed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="source" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="associationsAsSource" inverseEntity="Tag"/>
+        <relationship name="target" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="associationsAsTarget" inverseEntity="Tag"/>
+    </entity>
+    <entity name="TagAutomationRule" representedClassName="TagAutomationRule" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="ruleType" optional="YES" attributeType="String"/>
+        <attribute name="pattern" optional="YES" attributeType="String"/>
+        <attribute name="isEnabled" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="confidenceThreshold" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="metadataJSON" optional="YES" attributeType="String"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastMatchedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="automationRules" inverseEntity="Tag"/>
+    </entity>
+    <entity name="TagGroup" representedClassName="TagGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="groupDescription" optional="YES" attributeType="String"/>
+        <attribute name="sortOrder" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isSystem" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="groups" inverseEntity="Tag"/>
+    </entity>
+    <entity name="TagSynonym" representedClassName="TagSynonym" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="value" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="confidence" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <relationship name="tag" optional="YES" toMany="NO" maxCount="1" deletionRule="Cascade" destinationEntity="Tag" inverseName="synonyms" inverseEntity="Tag"/>
+    </entity>
+    <entity name="TagTemplateEntity" representedClassName="TagTemplateEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="templateDescription" optional="YES" attributeType="String"/>
+        <attribute name="collectionIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="isSystem" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastUsedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tagNamesJSON" optional="YES" attributeType="String"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="templates" inverseEntity="Tag"/>
+    </entity>
+    <entity name="ProjectMilestone" representedClassName="ProjectMilestone" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="NO" attributeType="String" defaultValueString=""/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isCompleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="completedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sortOrder" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="collection" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="milestones" inverseEntity="Collection"/>
+    </entity>
+    <entity name="RecommendationEvent" representedClassName="RecommendationEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reason" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="action" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="metadataJSON" optional="YES" attributeType="String"/>
+        <relationship name="bookmark" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Bookmark" inverseName="recommendationEvents" inverseEntity="Bookmark"/>
+        <relationship name="collection" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="recommendationEvents" inverseEntity="Collection"/>
+    </entity>
+    <entity name="RecommendationSettings" representedClassName="RecommendationSettings" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="frequency" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="allowSimilarContent" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="allowReadingPattern" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="allowTagAffinity" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="allowDomainFrequency" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="allowTrending" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="allowRediscovery" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="allowSerendipity" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="notificationsEnabled" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="collection" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="recommendationSettings" inverseEntity="Collection"/>
+    </entity>
+    <entity name="TagUsageEvent" representedClassName="TagUsageEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="action" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="bookmarkID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="bookmark" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Bookmark" inverseName="tagUsageEvents" inverseEntity="Bookmark"/>
+        <relationship name="tag" optional="YES" toMany="NO" maxCount="1" deletionRule="Cascade" destinationEntity="Tag" inverseName="usageEvents" inverseEntity="Tag"/>
+    </entity>
+    <entity name="BookmarkLink" representedClassName="BookmarkLink" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="NO" attributeType="UUID" defaultValueString="00000000-0000-0000-0000-000000000000" usesScalarValueType="NO"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="linkType" optional="NO" attributeType="String" defaultValueString="unknown"/>
+        <relationship name="bookmark" optional="YES" toMany="NO" maxCount="1" deletionRule="Cascade" destinationEntity="Bookmark" inverseName="links" inverseEntity="Bookmark"/>
+        <relationship name="event" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="CalendarEvent" inverseName="bookmarkLinks" inverseEntity="CalendarEvent"/>
+        <relationship name="note" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="bookmarkLinks" inverseEntity="Note"/>
+        <relationship name="task" optional="YES" toMany="NO" maxCount="1" deletionRule="Nullify" destinationEntity="TodoItem" inverseName="bookmarkLinks" inverseEntity="TodoItem"/>
+    </entity>
+    <entity name="ReadingSession" representedClassName="ReadingSession" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="NO" attributeType="UUID" defaultValueString="00000000-0000-0000-0000-000000000000" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="duration" optional="YES" attributeType="Double"/>
+        <attribute name="device" optional="YES" attributeType="String"/>
+        <relationship name="bookmark" optional="YES" toMany="NO" maxCount="1" deletionRule="Cascade" destinationEntity="Bookmark" inverseName="readingSessions" inverseEntity="Bookmark"/>
+    </entity>
+    <entity name="ReadingGoal" representedClassName="ReadingGoal" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="NO" attributeType="UUID" defaultValueString="00000000-0000-0000-0000-000000000000" usesScalarValueType="NO"/>
+        <attribute name="goalType" optional="NO" attributeType="String" defaultValueString="daily"/>
+        <attribute name="targetCount" optional="NO" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="periodStart" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="periodEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="completedCount" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="currentStreak" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bestStreak" optional="NO" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastCompletionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <elements>
+        <element name="CalendarEvent" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Note" positionX="-54" positionY="9" width="128" height="104"/>
+        <element name="TodoItem" positionX="-36" positionY="27" width="128" height="134"/>
+        <element name="Bookmark" positionX="-18" positionY="45" width="128" height="314"/>
+        <element name="VoiceNoteEntity" positionX="-45" positionY="36" width="128" height="254"/>
+        <element name="BookmarkLink" positionX="-9" positionY="54" width="128" height="104"/>
+        <element name="Collection" positionX="0" positionY="63" width="128" height="194"/>
+        <element name="Tag" positionX="18" positionY="81" width="128" height="134"/>
+        <element name="ReadingSession" positionX="27" positionY="90" width="128" height="104"/>
+        <element name="ReadingGoal" positionX="36" positionY="99" width="128" height="104"/>
+        <element name="TagAssociation" positionX="45" positionY="108" width="128" height="104"/>
+        <element name="ProjectMilestone" positionX="48" positionY="111" width="128" height="104"/>
+        <element name="TagAutomationRule" positionX="50" positionY="113" width="128" height="104"/>
+        <element name="TagGroup" positionX="54" positionY="117" width="128" height="104"/>
+        <element name="TagSynonym" positionX="63" positionY="126" width="128" height="104"/>
+        <element name="TagTemplateEntity" positionX="68" positionY="131" width="128" height="104"/>
+        <element name="TagUsageEvent" positionX="72" positionY="135" width="128" height="104"/>
+        <element name="RecommendationEvent" positionX="76" positionY="139" width="128" height="104"/>
+        <element name="RecommendationSettings" positionX="80" positionY="143" width="128" height="104"/>
+    </elements>
+</model>
